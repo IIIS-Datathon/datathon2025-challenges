@@ -20,7 +20,10 @@ def configure_gemini():
     """Configure Gemini API with proper error handling."""
     try:
         # Try Streamlit secrets first, then environment variable
-        api_key =os.getenv("GOOGLE_API_KEY")
+        try:
+            api_key = st.secrets.get("GOOGLE_API_KEY")
+        except:
+            api_key =os.getenv("GOOGLE_API_KEY")
         
         if not api_key:
             st.error("⚠️ **API Key Missing**: Please configure GOOGLE_API_KEY in Streamlit secrets or environment variables.")
