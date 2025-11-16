@@ -1,1 +1,0 @@
-https://www.kaggle.com/competitions/smadex-challenge-predict-the-revenue
