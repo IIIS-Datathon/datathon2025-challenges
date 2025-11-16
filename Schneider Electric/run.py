@@ -6,7 +6,7 @@ def run_script(script_name):
     try:
         print(f"--- Running {script_name} ---")
         # Using sys.executable ensures we use the same python interpreter
-        result = subprocess.run([sys.executable, script_name], check=True, capture_output=True, text=True)
+        result = subprocess.run(["python", script_name], cwd="./core", check=True, capture_output=True, text=True)
         print(result.stdout)
         if result.stderr:
             print("--- Stderr ---")
@@ -20,6 +20,6 @@ def run_script(script_name):
 
 if __name__ == "__main__":
     print("Starting the model training and SHAP generation pipeline...")
-    run_script("src/train_model.py")
-    run_script("src/generate_shap.py")
+    run_script("trainRF.py")
+    run_script("generateShap.py")
     print("Pipeline completed successfully!")
